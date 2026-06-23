@@ -1,0 +1,15 @@
+---
+alwaysApply: true
+---
+
+Stack: Next.js 15 App Router, TypeScript, Supabase hosted (no Docker), shadcn/ui Radix Nova, Tailwind, Vercel.
+
+Database: migration SEMPRE con `supabase db push`. MAI Docker. File migration in supabase/migrations/ creati con `supabase migration new <nome>`. Il nome della migration deve iniziare SEMPRE con un timestamp numerico crescente nel formato YYYYMMDDHHmmss (es. 20240623143000_create_polls.sql) in modo che l'ordine alfabetico dei file corrisponda sempre all'ordine di esecuzione. MAI usare prefissi tipo V1__, 001_, o altri formati non timestamp.
+
+Supabase client: client-side usa `src/lib/supabase.ts`, server-side usa `src/lib/supabase-server.ts`. MAI istanziare Supabase direttamente nei componenti.
+
+UI: usa SEMPRE componenti shadcn da `src/components/ui/`. MAI CSS inline. MAI creare componenti UI da zero se esiste già in shadcn.
+
+Architettura: Server Components per fetch dati, Server Actions per mutazioni, Client Components solo per interattività (realtime, click). Marca con "use client".
+
+Codice: commenti in italiano, variabili/funzioni in inglese, gestisci sempre gli errori Supabase, niente `any` TypeScript.
